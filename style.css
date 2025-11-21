@@ -1,0 +1,101 @@
+/* ===================== COMMON ===================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ===================== LOGIN ===================== */
+.login-container {
+    width: 350px;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.login-container input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.login-container button {
+    width: 95%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.25s;
+}
+
+.login-container button:hover {
+    background: #0056b3;
+}
+
+.login-container .error {
+    color: red;
+    margin-top: 12px;
+}
+
+/* ===================== INDEX ===================== */
+.index-wrapper {
+    text-align: center;
+}
+
+.index-box {
+    background: white;
+    padding: 30px 50px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.25);
+    animation: pop 0.4s ease;
+}
+
+.index-box h1 {
+    margin-bottom: 10px;
+}
+
+.logout-btn {
+    padding: 12px 20px;
+    background: #e74a3b;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+}
+
+/* ===================== ANIMATION ===================== */
+@keyframes pop {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
