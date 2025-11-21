@@ -11,14 +11,12 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // MULTI QUERY – cho phép UNION và DROP TABLE chạy thật
     $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
 
     if (mysqli_multi_query($conn, $query)) {
 
         $rows = [];
 
-        // Lấy toàn bộ kết quả (để DROP TABLE chạy tới cuối)
         do {
             if ($result = mysqli_store_result($conn)) {
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -28,9 +26,7 @@ if (isset($_POST['login'])) {
             }
         } while (mysqli_next_result($conn));
 
-        // ==========================
         // TEST 4 – UNION
-        // ==========================
         if (stripos($username, "union") !== false || stripos($password, "union") !== false) {
             $_SESSION['test_case'] = "union";
             $_SESSION['result_data'] = $rows;
@@ -38,9 +34,7 @@ if (isset($_POST['login'])) {
             exit();
         }
 
-        // ==========================
         // TEST 5 – DROP TABLE
-        // ==========================
         if (stripos($username, "drop") !== false || stripos($password, "drop") !== false) {
             $_SESSION['test_case'] = "drop";
             $_SESSION['result_data'] = "DROP TABLE đã chạy! Bảng users có thể đã bị xóa.";
@@ -48,9 +42,7 @@ if (isset($_POST['login'])) {
             exit();
         }
 
-        // ==========================
         // TEST 1–3 – bypass login
-        // ==========================
         if (count($rows) >= 1) {
             header("Location: index.php");
             exit();
@@ -60,7 +52,7 @@ if (isset($_POST['login'])) {
 
     } else {
         $_SESSION['test_case'] = "sql_error";
-        $_SESSION['result_data'] = "Lỗi SQL – câu lệnh không thể thực thi.";
+        $_SESSION['result_data'] = "Lỗi SQL câu lệnh không thể thực thi.";
         header("Location: result.php");
         exit();
     }
