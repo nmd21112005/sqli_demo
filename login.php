@@ -44,7 +44,17 @@ if (isset($_POST['login'])) {
 
         // TEST 1–3 – bypass login
         if (count($rows) >= 1) {
-            header("Location: index.php");
+
+            $user = $rows[0];
+
+            $_SESSION['username'] = $user['username'];
+
+            if ($user['username'] === 'admin') {
+                header("Location: admin.php");
+                exit();
+            }
+
+            header("Location: user.php");
             exit();
         }
 
@@ -60,20 +70,23 @@ if (isset($_POST['login'])) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Login Demo</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="login-container">
-    <h2>Đăng nhập</h2>
-    <form method="POST">
-        <input type="text" name="username" placeholder="Username"><br>
-        <input type="password" name="password" placeholder="Password"><br>
-        <button name="login">Login</button>
-    </form>
-    <p class="error"><?php echo $message; ?></p>
-</div>
+    <div class="login-container">
+        <h2>Đăng nhập</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username"><br>
+            <input type="password" name="password" placeholder="Password"><br>
+            <button name="login">Login</button>
+        </form>
+        <p class="error"><?php echo $message; ?></p>
+    </div>
 </body>
+
 </html>

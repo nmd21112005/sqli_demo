@@ -9,6 +9,6 @@ CREATE TABLE users (
 
 INSERT INTO users (username, password)
 VALUES 
+('dat', '12222'),
 ('admin', '123'),
-('dat', '12421'),
-('aqư', 'ddd');
+('aqw', 'ddd');
