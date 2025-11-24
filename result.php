@@ -1,11 +1,10 @@
 <?php
-session_start(); // bắt buộc để lấy session
+session_start();
 
 require_once "connect.php";
 
 $resultMessage = "";
 
-// Nếu login.php đã lưu dữ liệu SQL Injection vào session
 if (isset($_SESSION['result_data'])) {
     $data = $_SESSION['result_data'];
 
@@ -20,15 +19,12 @@ if (isset($_SESSION['result_data'])) {
         }
         $resultMessage .= "</ul>";
     } else {
-        // nếu result_data là string thông báo (DROP TABLE)
         $resultMessage .= "<p>$data</p>";
     }
 
-    // xóa session để tránh in lại khi reload
     unset($_SESSION['result_data']);
 }
 
-// Nếu có action qua GET (ví dụ delete/show)
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 

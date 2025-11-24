@@ -42,7 +42,7 @@ if (isset($_POST['login'])) {
             exit();
         }
 
-        // TEST 1–3 – bypass login
+        // TEST 1–3 – BYPASS LOGIN
         if (count($rows) >= 1) {
 
             $user = $rows[0];
